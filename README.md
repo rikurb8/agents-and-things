@@ -3,7 +3,63 @@
 A collection of tools and utilities used in workflows/proof-of-concepts for research, productivity and business.
 
 ## Overview
-<TODO>
+
+This repository serves as a workshop for creating, testing, and refining practical AI-powered tools that solve real problems. Think of it as both a laboratory and a parts bin - a place where experimental tools are prototyped, tested in real-world scenarios, and eventually graduated to standalone projects when proven useful.
+
+The collection focuses on agent-based workflows, LLM integration patterns, and automation utilities that can be composed together to build increasingly sophisticated systems. Each component is designed to be self-contained and easily transportable, following the "build once, use anywhere" philosophy.
+
+Rather than rebuilding similar functionality across multiple projects, we develop core patterns here first, refine them through practical use, then copy or adapt the validated implementations to other projects as needed. This approach accelerates development, ensures consistency, and creates a growing library of battle-tested solutions that can be quickly deployed to address new challenges.
+
+### What are Agents and Workflows?
+
+We make an important architectural distinction between two types of systems:
+
+- **Workflows** are systems where LLMs and tools are orchestrated through predefined code paths.
+- **Agents** are systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks.
+
+Both approaches have their place in building effective AI systems, depending on the requirements of your use case.
+
+## Core Agent Design Principles
+
+When implementing agents, we follow three core principles:
+
+1. **Simplicity**: Maintain simplicity in your agent's design. Start with the simplest solution and only increase complexity when needed.
+2. **Transparency**: Prioritize transparency by explicitly showing the agent's planning steps and decision-making process.
+3. **Thoughtful Interfaces**: Carefully craft your agent-computer interface through thorough tool documentation and testing. Consider this as important as designing human-computer interfaces.
+
+## Common Agent Patterns
+
+The following patterns represent effective ways to structure agent-based systems:
+
+### Workflow Patterns
+
+1. **Prompt Chaining**: Decompose tasks into sequential steps where each LLM call processes the output of the previous one.
+   - *When to use*: Ideal for tasks that can be cleanly decomposed into fixed subtasks.
+   - *Examples*: Content generation with editing, translation of specialized content.
+
+2. **Routing**: Classify inputs and direct them to specialized followup tasks.
+   - *When to use*: For complex tasks with distinct categories better handled separately.
+   - *Examples*: Customer service triage, optimizing model selection based on query complexity.
+
+3. **Parallelization**: Process tasks simultaneously and aggregate results.
+   - *When to use*: When subtasks can be parallelized or when multiple perspectives are needed.
+   - *Examples*: Implementing guardrails, automated evaluations, code review.
+
+4. **Orchestrator-Workers**: A central LLM dynamically breaks down tasks, delegates to workers, and synthesizes results.
+   - *When to use*: For complex tasks where subtasks can't be predetermined.
+   - *Examples*: Coding projects spanning multiple files, comprehensive search tasks.
+
+5. **Evaluator-Optimizer**: One LLM generates a response while another evaluates and provides feedback in a loop.
+   - *When to use*: When clear evaluation criteria exist and iterative refinement adds value.
+   - *Examples*: Literary translation, complex search requiring multiple rounds.
+
+### Autonomous Agents
+
+Fully autonomous agents plan and operate independently, using tools and gaining ground truth from the environment at each step. They handle sophisticated tasks, but their implementation can be straightforward—typically just LLMs using tools based on environmental feedback in a loop.
+
+- *When to use*: For open-ended problems where predicting the required steps is difficult.
+- *Examples*: Complex coding tasks, research assistants, autonomous virtual assistants.
+
 
 ## General Guidelines
 
